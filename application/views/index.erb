@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Buildings Rule!</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body class="home">
+    <h1>Buildings Rule!</h1>
+    <h2>Click the building name to learn more:</h2>
+    <ul class="building-list">
+    <% buildings.each do |building| %>
+        <li><a href="/building/<%= building['id'] %>"><%= building['name'] %></a></li>
+    <% end %>
+    </ul>
+</body>
+</html>
