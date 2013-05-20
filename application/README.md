@@ -4,6 +4,15 @@ Normally this package would be assembled with some form of one line install to m
 - Bundler
 
 ##Setting up the Application
-1. Install the dependencies with `bundle install`
+Install the dependencies with `bundle install`
 
 ##Testing
+Run spec tests with `rake`
+
+##Start the App Locally For Development
+Run `rake start_development`
+
+(Defaults to port 4567 for this Demo)
+
+##Start the App For Testing
+Run `rake start`

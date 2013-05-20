@@ -31,4 +31,5 @@ class FeatureContext extends MinkContext
     {
         $this->parameters = $parameters;
     }
+
 }

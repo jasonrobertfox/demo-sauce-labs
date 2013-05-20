@@ -3,7 +3,6 @@
 
     <target name="prepare" description="Prepare for build">
         <mkdir dir="${basedir}/build/logs" />
-        <mkdir dir="${basedir}/build/coverage" />
     </target>
 
     <target name="behat" description="Run system tests with behat except those requiring javascript interaction." depends="prepare">
@@ -11,26 +10,47 @@
             <arg value="--tags=~@javascript" />
             <arg value="--config=${basedir}/config/behat.yml" />
             <arg value="--format=html,progress" />
-            <arg value="--out=${basedir}/build/logs/behat.html," />
+            <arg value="--out=${basedir}/build/logs/standard-behat.html," />
+        </exec>
+    </target>
+
+    <target name="behat:headless" description="Run full suite of tests using PhantomJS + Selenium" depends="prepare">
+        <exec dir="${basedir}" executable="${basedir}/bin/behat" failonerror="true">
+            <arg value="-p=phantomjs" />
+            <arg value="--config=${basedir}/config/behat.yml" />
+            <arg value="--format=html,progress" />
+            <arg value="--out=${basedir}/build/logs/phantomjs-behat.html," />
         </exec>
     </target>
 
     <target name="behat:full" description="Run full suite of tests using Selenium" depends="prepare">
         <exec dir="${basedir}" executable="${basedir}/bin/behat" failonerror="true">
-            <arg value="-p=selenium-full" />
             <arg value="--config=${basedir}/config/behat.yml" />
             <arg value="--format=html,progress" />
-            <arg value="--out=${basedir}/build/logs/behat.html," />
+            <arg value="--out=${basedir}/build/logs/selenium-behat.html," />
         </exec>
     </target>
 
     <target name="behat:sauce" description="Run full suite of tests using Sauce Labs" depends="prepare">
         <exec dir="${basedir}" executable="${basedir}/bin/behat" failonerror="true">
-            <arg value="-p=sauce-vista-ie9" />
+            <arg value="-p=sauce" />
             <arg value="--config=${basedir}/config/behat.yml" />
             <arg value="--format=html,progress" />
-            <arg value="--out=${basedir}/build/logs/behat.html," />
+            <arg value="--out=${basedir}/build/logs/sauce-behat.html," />
         </exec>
+    </target>
+
+    <target name="behat:config">
+        <property file="${basedir}/config/${env}.behat.properties" />
+        <exec executable="${basedir}/bin/sauce_config" failonerror="true">
+            <arg value="${sauce.extensions.selenium2.wd_host.user}" />
+            <arg value="${sauce.extensions.selenium2.wd_host.key}" />
+        </exec>
+        <copy file="${basedir}/config/behat.yml.template" tofile="${basedir}/config/behat.yml" overwrite="true">
+            <filterset begintoken="{{" endtoken="}}">
+                <filtersfile file="${basedir}/config/${env}.behat.properties" />
+            </filterset>
+        </copy>
     </target>
 
 </project>
