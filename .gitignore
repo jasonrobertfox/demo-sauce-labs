@@ -3,3 +3,4 @@
 **/bin/
 local.*
 sauce_connect.log
+behat.yml

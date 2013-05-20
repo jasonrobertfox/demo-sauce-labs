@@ -40,7 +40,7 @@
         </exec>
     </target>
 
-    <target name="behat:config">
+    <target name="behat:config" description="Configures Sauce Connect and Copies the Behat YML file to the right place.">
         <property file="${basedir}/config/${env}.behat.properties" />
         <exec executable="${basedir}/bin/sauce_config" failonerror="true">
             <arg value="${sauce.extensions.selenium2.wd_host.user}" />
