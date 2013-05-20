@@ -1,0 +1,24 @@
+default:
+  paths:
+    features: '%behat.paths.base%/../features'
+    bootstrap:  '%behat.paths.features%/bootstrap'
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: http://localhost:4567/
+      javascript_session: selenium2
+      browser_name: firefox
+      goutte: ~
+      selenium2: ~
+
+phantomjs:
+  extensions:
+    Behat\MinkExtension\Extension:
+      selenium2:
+        wd_host: "http://localhost:8643/wd/hub"
+
+sauce:
+  extensions:
+    Behat\MinkExtension\Extension:
+      selenium2:
+        wd_host: {{sauce.extensions.selenium2.wd_host.user}}:{{sauce.extensions.selenium2.wd_host.key}}@ondemand.saucelabs.com/wd/hub
+        capabilities: { "browser": "googlechrome", "platform": "OS X 10.6", "name": "Behat PHP Demo" }

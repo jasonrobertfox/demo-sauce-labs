@@ -1,0 +1,12 @@
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+task :default => :spec
+
+task :start_development do
+    sh "shotgun --port=4567 config.ru"
+end
+
+task :start do
+    sh "ruby app.rb"
+end

@@ -1,0 +1,2 @@
+sauce.extensions.selenium2.wd_host.user = YOUR_SAUCE_LABS_USER
+sauce.extensions.selenium2.wd_host.key = YOUR_SAUCE_LABS_API_KEY
