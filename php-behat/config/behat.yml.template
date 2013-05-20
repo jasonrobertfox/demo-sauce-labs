@@ -11,12 +11,18 @@ default:
       selenium2: ~
 
 phantomjs:
+  filters:
+    #This is only running specific features for the purposes of the demo
+    tags: "@demo1"
   extensions:
     Behat\MinkExtension\Extension:
       selenium2:
         wd_host: "http://localhost:8643/wd/hub"
 
 sauce:
+  filters:
+    #This is only running specific features for the purposes of the demo
+    tags: "@demo1"
   extensions:
     Behat\MinkExtension\Extension:
       selenium2:

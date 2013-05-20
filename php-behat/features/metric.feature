@@ -4,6 +4,7 @@ Feature: Toggle between standard and metric system
   As a metric system user
   I want to toggle between dimension systems
 
+  @demo1
   Scenario: There is a toggle button
     Given I am on "/building/freedom-tower"
     Then I should see "Switch to Metric"

@@ -4,3 +4,4 @@
 local.*
 sauce_connect.log
 behat.yml
+ondemand.yml

@@ -1,0 +1,2 @@
+default: --tags @demo2
+selenium: --tags @selenium
