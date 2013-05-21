@@ -9,14 +9,14 @@ Feature: Toggle between standard and metric system
     Given I am on "/building/freedom-tower"
     Then I should see "Switch to Metric"
 
-  @demo2 @selenium
+  @demo2
   Scenario: Clicking on the toggle button will switch dimensions
     Given I am on "/building/freedom-tower"
     When I follow "Switch to Metric"
     Then I should see "Top Floor: 386.4864 m"
     And I should see "Tip: 541.3248 m"
 
-  @demo2 @selenium
+  @demo2
   Scenario: Clicking on the toggle button twice should show me the original dimensions
     Given I am on "/building/freedom-tower"
     When I follow "Switch to Metric"

@@ -1,10 +1,33 @@
-$:.unshift(File.dirname(__FILE__) + '/../../lib')
+# $:.unshift(File.dirname(__FILE__) + '/../../lib')
 require 'cucumber/rake/task'
 
+namespace :cucumber do
   Cucumber::Rake::Task.new(:headless) do |t|
-    t.profile = "default"
+    t.profile = "headless"
   end
 
   Cucumber::Rake::Task.new(:selenium) do |t|
     t.profile = "selenium"
   end
+
+  Cucumber::Rake::Task.new(:sauce) do |t|
+    t.profile = "sauce_chrome"
+  end
+end
+
+directory "build"
+
+desc "Runs things in a headless fashion"
+task :headless => :build do
+    Rake::Task['cucumber:headless'].invoke
+end
+
+desc "Runs things on selenium"
+task :full => :build do
+    Rake::Task['cucumber:selenium'].invoke
+end
+
+desc "Runs things on sauce labs"
+task :sauce => :build do
+    Rake::Task['cucumber:sauce'].invoke
+end

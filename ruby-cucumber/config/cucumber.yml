@@ -1,2 +1,6 @@
-default: --tags @demo2
-selenium: --tags @selenium
+default: --profile headless
+headless: --tags @demo2 --format progress --format html --out="build/phantomjs-cucumber.html" DRIVER=headless
+selenium: --tags @demo2 --format progress --format html --out="build/selenium-cucumber.html" DRIVER=selenium
+sauce_ie8: --tags @demo2 --format progress --format html --out="build/sauce-cucumber.html" DRIVER=sauce BROWSER=ie8
+sauce_ie10: --tags @demo2 --format progress --format html --out="build/sauce-cucumber.html" DRIVER=sauce BROWSER=ie10
+sauce_chrome: --tags @demo2 --format progress --format html --out="build/sauce-cucumber.html" DRIVER=sauce BROWSER=chrome
