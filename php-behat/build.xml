@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Behat" basedir=".">
 
+    <target name="test">
+        <echo message="test1"></echo>
+    </target>
+
     <target name="prepare" description="Prepare for build">
         <mkdir dir="${basedir}/build/logs" />
     </target>

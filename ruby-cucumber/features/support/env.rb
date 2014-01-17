@@ -42,6 +42,5 @@ end
 Sauce.config do |c|
   #configure to use sauce-connect to start the tunnel
   c[:start_tunnel] = true
-
   c[:browsers] = [browser_config]
 end
